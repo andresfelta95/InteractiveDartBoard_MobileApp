@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default function Account() {
+export default function Game() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Account Screen</Text>
+            <Text style={styles.title}>Game Screen</Text>
         </View>
     );
 }
@@ -12,6 +12,7 @@ export default function Account() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
     },
