@@ -1,25 +1,52 @@
+/**
+ *  Home Screen of the Interactive Dartboard App
+ * 
+ * Author: Andres Tangarife - Keven L
+ * Date: 2023-04-10
+ * 
+ * This screen is the home screen of the app. 
+ * It will show the user's name, its games, and the option to create a new game.
+ * 
+ */
 import * as React from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 
-export default function Home({ navigation }) {
+// import the game context
+import { GameContext } from '../providers/GameProvider';
+
+// import the dartboard component
+import DartBoard from '../components/DartBoard';
+
+// create the home screen
+export default function Home() {
+    // get the game context
+    const { game, setGame } = React.useContext(GameContext);
+
+    // create the home screen
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Home Screen</Text>
-            <Button title="Account" onPress={() => navigation.navigate('Account')} />
-            <Button title="Game" onPress={() => navigation.navigate('Game')} />
-            <Button title="Sign Out" onPress={() => navigation.navigate('SignIn')} />
+            <Text style={styles.title}>Interactive Dartboard</Text>
+            <Text style={styles.subtitle}>Home Screen</Text>
+            <DartBoard />
+            <Button title="Create Game" onPress={() => setGame({ ...game, game: true })} />
         </View>
     );
 }
 
+// define the styles
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        backgroundColor: '#fff',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     title: {
-        fontSize: 20,
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
+    subtitle: {
+        fontSize: 18,
         fontWeight: 'bold',
     },
 });
