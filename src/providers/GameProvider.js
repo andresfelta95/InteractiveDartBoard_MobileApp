@@ -14,7 +14,6 @@
  */
 
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
 
 // create the context
 export const GameContext = React.createContext();
