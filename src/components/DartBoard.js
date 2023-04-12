@@ -14,6 +14,9 @@
 // import the React and React Native components
 import * as React from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { Surface, Shape, Path } from '@react-native-community/art';
+
+
 
 // import the components we will need
 import { GameContext } from '../providers/GameProvider';
@@ -25,35 +28,38 @@ import Colors from '../constants/Colors';
 export default function DartBoard() {
     // get the game context
     const { game, setGame } = React.useContext(GameContext);
+    const center = 150; // the center of the dartboard
+    const radius = 150; // the radius of the dartboard
+
+    const paths = [
+        //  Outher circle
+        Path().moveTo(center, center - radius).arc(0, radius * 2, radius).arc(0, radius * -2, radius).close(),
+
+        //  Bullseye
+        Path().moveTo(center, center - 10).arc(0, 20, 10).arc(0, 20 * -1, 10).close(),
+
+        //  Triple ring
+        Path().moveTo(center, center - radius + 20).arc(0, radius * 2 - 40, radius - 20).arc(0, radius * -2 + 40, radius - 20).close(),
+
+        //  Double ring
+        Path().moveTo(center, center - radius + 40).arc(0, radius * 2 - 80, radius - 40).arc(0, radius * -2 + 80, radius - 40).close(),
+    ]
 
     // create the dartboard
     return (
         <View style={styles.container}>
-            <View style={styles.dartboard}>
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-                <View style={styles.dartboardSection} />
-            </View>
-            <View style={styles.dartboardCenter} />
+            <Surface width={300} height={300}>
+                <Shape d={paths[0]} fill={Colors.dartboard} />
+                <Shape d={paths[1]} fill={Colors.dartboardCenter} />
+                <Shape d={paths[2]} fill={Colors.dartboardSection} />
+                <Shape d={paths[3]} fill={Colors.dartboardSection} />
+            </Surface>
         </View>
     );
 }
+
+
+
 
 // define your styles
 const styles = StyleSheet.create({
