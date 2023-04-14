@@ -14,50 +14,44 @@
 // import the React and React Native components
 import * as React from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-import { Surface, Shape, Path } from '@react-native-community/art';
 
-
-
-// import the components we will need
-import { GameContext } from '../providers/GameProvider';
-
-// import the colors
+// import the dartboard colors
 import Colors from '../constants/Colors';
 
-// create the DartBoard component
-export default function DartBoard() {
-    // get the game context
-    const { game, setGame } = React.useContext(GameContext);
-    const center = 150; // the center of the dartboard
-    const radius = 150; // the radius of the dartboard
+//  Create the DartBoard component
+export default function DartBoard(props) {
+    // get the width and height of the screen
+    const { width, height } = Dimensions.get('window');
 
-    const paths = [
-        //  Outher circle
-        Path().moveTo(center, center - radius).arc(0, radius * 2, radius).arc(0, radius * -2, radius).close(),
+    // create the dartboard sections
+    const sections = [];
+    for (let i = 0; i < 20; i++) {
+        // calculate the angle of the section
+        const angle = (i * 18) + 9;
 
-        //  Bullseye
-        Path().moveTo(center, center - 10).arc(0, 20, 10).arc(0, 20 * -1, 10).close(),
+        // calculate the x and y coordinates of the section
+        const x = Math.cos(angle * Math.PI / 180) * 190;
+        const y = Math.sin(angle * Math.PI / 180) * 190;
 
-        //  Triple ring
-        Path().moveTo(center, center - radius + 20).arc(0, radius * 2 - 40, radius - 20).arc(0, radius * -2 + 40, radius - 20).close(),
+        // create the section
+        sections.push(
+            <View key={i} style={[styles.dartboardSection, { transform: [{ rotate: `${angle}deg` }] }]}>
+                <Text style={{ color: 'white', fontSize: 20 }}>{i + 1}</Text>
+            </View>
+        );
+    }
 
-        //  Double ring
-        Path().moveTo(center, center - radius + 40).arc(0, radius * 2 - 80, radius - 40).arc(0, radius * -2 + 80, radius - 40).close(),
-    ]
-
-    // create the dartboard
+    // return the dartboard
     return (
         <View style={styles.container}>
-            <Surface width={300} height={300}>
-                <Shape d={paths[0]} fill={Colors.dartboard} />
-                <Shape d={paths[1]} fill={Colors.dartboardCenter} />
-                <Shape d={paths[2]} fill={Colors.dartboardSection} />
-                <Shape d={paths[3]} fill={Colors.dartboardSection} />
-            </Surface>
+            <View style={styles.dartboard}>
+                {sections}
+                <View style={styles.dartboardCenter} />
+            </View>
         </View>
     );
-}
 
+}
 
 
 
