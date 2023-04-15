@@ -1,5 +1,5 @@
 /*
-    This component is the dartboard. It is a circle with a radius of 200px.
+    This component is the dartboard. It is a circle that will cover the screen size
     It has 20 sections, each with a number from 1 to 20.
     The sections are evenly spaced around the circle.
     The sections are colored red, blue, green, and yellow.
@@ -10,81 +10,41 @@
     The user will be able to click on the circle and pick the exact location from the circle.
 
 */
-
-// import the React and React Native components
+// import react
 import * as React from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+// import react native components
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-// import the dartboard colors
-import Colors from '../constants/Colors';
+// import the dartboard components
+import Bullseye from './BullsEye';
+import TripleRing from './TripleRing';
+import DoubleRing from './DoubleRing';
+import OuterRing from './OutherRign';
 
-//  Create the DartBoard component
-export default function DartBoard(props) {
-    // get the width and height of the screen
-    const { width, height } = Dimensions.get('window');
-
-    // create the dartboard sections
-    const sections = [];
-    for (let i = 0; i < 20; i++) {
-        // calculate the angle of the section
-        const angle = (i * 18) + 9;
-
-        // calculate the x and y coordinates of the section
-        const x = Math.cos(angle * Math.PI / 180) * 190;
-        const y = Math.sin(angle * Math.PI / 180) * 190;
-
-        // create the section
-        sections.push(
-            <View key={i} style={[styles.dartboardSection, { transform: [{ rotate: `${angle}deg` }] }]}>
-                <Text style={{ color: 'white', fontSize: 20 }}>{i + 1}</Text>
-            </View>
-        );
-    }
-
-    // return the dartboard
+// create the DartBoard component
+function DartBoard() {
+    // create the dartboard
     return (
         <View style={styles.container}>
-            <View style={styles.dartboard}>
-                {sections}
-                <View style={styles.dartboardCenter} />
-            </View>
+            <Bullseye />
+            <TripleRing />
+            <DoubleRing />
+            <OuterRing />
         </View>
     );
-
 }
 
-
-
-// define your styles
+// create the styles
 const styles = StyleSheet.create({
     container: {
+        width: '100%',
+        height: '100%',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    dartboard: {
-        width: 400,
-        height: 400,
-        borderRadius: 200,
-        backgroundColor: Colors.dartboard,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    dartboardSection: {
-        width: 380,
-        height: 380,
-        borderRadius: 190,
-        backgroundColor: Colors.dartboardSection,
-        position: 'absolute',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    dartboardCenter: {
-        width: 20,
-        height: 20,
-        borderRadius: 10,
-        backgroundColor: Colors.dartboardCenter,
-        position: 'absolute',
+        borderWidth: 1,
     },
 });
-            
+
+// export the DartBoard component
+export default DartBoard;

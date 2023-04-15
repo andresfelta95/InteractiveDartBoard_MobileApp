@@ -49,7 +49,6 @@ function Game() {
             <Text style={styles.title}>Interactive Dartboard</Text>
             <Text style={styles.subtitle}>Game Screen</Text>
             <DartBoard />
-            <Button title="Create Game" onPress={() => setGame({ ...game, game: true })} />
         </View>
     );
 }
