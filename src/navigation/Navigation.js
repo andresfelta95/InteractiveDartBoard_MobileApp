@@ -27,11 +27,41 @@ const Stack = createNativeStackNavigator();
 export default function Navigation() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="SignIn" component={SignIn} />
-            <Stack.Screen name="SignUp" component={SignUp} />
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Account" component={Account} />
-            <Stack.Screen name="Game" component={Game} />
+            <Stack.Screen 
+                name="SignIn" 
+                component={SignIn}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen 
+                name="SignUp" 
+                component={SignUp} 
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen 
+                name="Home" 
+                component={Home}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen 
+                name="Account" 
+                component={Account}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <Stack.Screen 
+                name="Game" 
+                component={Game}
+                options={{
+                    headerShown: false,
+                }}
+            />
         </Stack.Navigator>
     );
 }

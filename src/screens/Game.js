@@ -11,6 +11,7 @@
 
 // import react
 import * as React from 'react';
+import { SafeAreaView } from 'react-native';
 
 // import react native components
 import { View, Text, Button, StyleSheet } from 'react-native';
@@ -45,11 +46,11 @@ function Game() {
 
     // create the game screen
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Interactive Dartboard</Text>
             <Text style={styles.subtitle}>Game Screen</Text>
             <DartBoard />
-        </View>
+        </SafeAreaView>
     );
 }
 

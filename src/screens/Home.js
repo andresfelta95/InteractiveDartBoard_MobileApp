@@ -25,7 +25,7 @@ export default function Home({ navigation }) {
         <View style={styles.container}>
             <Text style={styles.title}>Interactive Dartboard</Text>
             <Text style={styles.subtitle}>Home Screen</Text>
-            <Button title="Create Game" onPress={() => navigation.navigate('Game')} />
+            <Button title="New Game" onPress={() => navigation.navigate('Game')} />
         </View>
     );
 }

@@ -13,38 +13,34 @@
 // import react
 import * as React from 'react';
 // import react native components
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { SafeAreaView, Image, StyleSheet } from 'react-native';
 
-// import the dartboard components
-import Bullseye from './BullsEye';
-import TripleRing from './TripleRing';
-import DoubleRing from './DoubleRing';
-import OuterRing from './OutherRign';
+// create the dartboard component
+export default function DartBoard() {
+    // render the dartboard
+    return rederDartBoard();
+}
 
-// create the DartBoard component
-function DartBoard() {
+
+
+//  Function to render the dartboard
+function rederDartBoard() {
     // create the dartboard
     return (
-        <View style={styles.container}>
-            <Bullseye />
-            <TripleRing />
-            <DoubleRing />
-            <OuterRing />
-        </View>
+        <SafeAreaView >
+            <Image
+                style={styles.image}
+                source={require('../assets/dartboard.png')}
+            />
+        </SafeAreaView>
     );
 }
 
 // create the styles
 const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: '100%',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderWidth: 1,
+    image: {
+        width: 400,
+        height: 400,
     },
 });
 
-// export the DartBoard component
-export default DartBoard;
