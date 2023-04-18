@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
     touchable: {
         alignItems: 'center',
         justifyContent: 'center',
-        height: 390,
-        width: 390,
+        height: 400,
+        width: 400,
     },
     circle: {
         width: 5,
