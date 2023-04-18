@@ -49,6 +49,7 @@ export default function DartBoard() {
                 />
                 <SafeAreaView style={styles.overlay}>
                     {circleCoords.map((circleCoord, index) => (
+                        console.log(circleCoord),
                         <SafeAreaView
                             key={index}
                             style={[styles.circle, { left: circleCoord.x, top: circleCoord.y }]}
@@ -59,6 +60,8 @@ export default function DartBoard() {
         </SafeAreaView>
     )
 }
+
+
 
 // create the styles
 const styles = StyleSheet.create({
@@ -77,8 +80,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     circle: {
-        width: 20,
-        height: 20,
+        width: 5,
+        height: 5,
         borderRadius: 10,
         backgroundColor: 'blue',
         position: 'absolute',
