@@ -29,6 +29,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './src/navigation/Navigation';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+
+
 
 //  Import the game provider and the game context
 import GameProvider, { GameContext } from './src/providers/GameProvider';
@@ -37,9 +40,11 @@ export default function App() {
     // return the app
     return (
         <GameProvider>
-            <NavigationContainer>
-                <Navigation />
-            </NavigationContainer>
+            <SafeAreaProvider>
+                <NavigationContainer>
+                    <Navigation />
+                </NavigationContainer>
+            </SafeAreaProvider>
         </GameProvider>
     );
 }

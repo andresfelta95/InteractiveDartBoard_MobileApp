@@ -13,7 +13,7 @@
 // import react
 import * as React from 'react';
 // import react native components
-import { SafeAreaView, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 // create the dartboard component
 export default function DartBoard() {
