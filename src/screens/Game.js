@@ -28,8 +28,10 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: 'green',
     },
     title: {
+        padding: 10,
         fontSize: 24,
         fontWeight: 'bold',
     },
