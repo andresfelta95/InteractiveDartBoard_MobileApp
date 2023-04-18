@@ -61,23 +61,29 @@ export default function DartBoard() {
     )
 }
 
+//  Function to transform the coordinates on app to the coordinates on the dartboard
+/*
+ * Bullseye: (0,0) -> (200,200)
+ *  
+*/
+
 
 
 // create the styles
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
     image: {
-        width: 390,
-        height: 390,
+        width: 400,
+        height: 400,
     },
     touchable: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        height: 390,
+        width: 390,
     },
     circle: {
         width: 5,
