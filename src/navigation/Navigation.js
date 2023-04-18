@@ -59,7 +59,7 @@ export default function Navigation() {
                 name="Game" 
                 component={Game}
                 options={{
-                    headerShown: false,
+                    headerShown: true,
                 }}
             />
         </Stack.Navigator>

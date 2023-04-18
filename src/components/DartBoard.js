@@ -13,34 +13,79 @@
 // import react
 import * as React from 'react';
 // import react native components
-import { SafeAreaView, Image, StyleSheet } from 'react-native';
+import { SafeAreaView, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 // create the dartboard component
 export default function DartBoard() {
+    // create the state to hold the coordinates of the circles
+    const [circleCoords, setCircleCoords] = React.useState([]);
+
+    // create the state to hold the coordinates of the circles
+    const handlePress = (event) => {
+        // get the location of the press
+        const { locationX, locationY } = event.nativeEvent;
+        // add the location to the circleCoords
+        setCircleCoords([...circleCoords, { x: locationX, y: locationY }]);
+    };
+
+    // create the state to long press
+    const handleLongPress = (event) => {
+        // get the location of the press
+        setCircleCoords([]);
+    };
+
+
     // render the dartboard
-    return rederDartBoard();
-}
-
-
-
-//  Function to render the dartboard
-function rederDartBoard() {
-    // create the dartboard
     return (
-        <SafeAreaView >
-            <Image
-                style={styles.image}
-                source={require('../assets/dartboard.png')}
-            />
+        <SafeAreaView style={styles.container}>
+            <TouchableOpacity 
+                style={styles.touchable}
+                onPress={handlePress} 
+                onLongPress={handleLongPress}
+            >
+                <Image
+                    style={styles.image}
+                    source={require('../assets/dartboard.png')}
+                />
+                <SafeAreaView style={styles.overlay}>
+                    {circleCoords.map((circleCoord, index) => (
+                        <SafeAreaView
+                            key={index}
+                            style={[styles.circle, { left: circleCoord.x, top: circleCoord.y }]}
+                        />
+                    ))}
+                </SafeAreaView>
+            </TouchableOpacity>
         </SafeAreaView>
-    );
+    )
 }
 
 // create the styles
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     image: {
-        width: 400,
-        height: 400,
+        width: 390,
+        height: 390,
+    },
+    touchable: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    circle: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        backgroundColor: 'blue',
+        position: 'absolute',
+    },
+    overlay: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'transparent',
     },
 });
 
