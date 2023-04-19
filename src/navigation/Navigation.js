@@ -34,49 +34,53 @@ export default function Navigation() {
                 headerShown: false,
             }}
         >
-            <Stack.Screen 
-                name="SignIn" 
-                component={SignIn}
-            />
-            <Stack.Screen 
-                name="SignUp" 
-                component={SignUp} 
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <Stack.Screen 
-                name="Home"
-            >
-                {() => (
-                    <Tab.Navigator>
-                        <Tab.Screen
-                            name="Home"
-                            component={Home}
-                            options={{
-                                headerShown: false,
-                            }}
-                        />
-                        <Tab.Screen 
-                            name="Account" 
-                            component={Account}
-                            options={{
-                                headerShown: false,
-                            }}
-                        />
-                    </Tab.Navigator>
-                )}
-            </Stack.Screen>
-            <Stack.Screen 
-                name="Game" 
-                component={Game}
-                options={{
-                    headerTitle: '',
-                    headerStyle: {
-                        backgroundColor: 'green',
-                    },
-                }}
-            />
+            <Stack.Group>
+                <Stack.Screen 
+                    name="SignIn" 
+                    component={SignIn}
+                />
+                <Stack.Screen 
+                    name="SignUp" 
+                    component={SignUp} 
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen 
+                    name=""
+                >
+                    {() => (
+                        <Tab.Navigator>
+                            <Tab.Screen
+                                name="Home"
+                                component={Home}
+                                options={{
+                                    headerShown: false,
+                                }}
+                            />
+                            <Tab.Screen 
+                                name="Account" 
+                                component={Account}
+                                options={{
+                                    headerShown: false,
+                                }}
+                            />
+                        </Tab.Navigator>
+                    )}
+                </Stack.Screen>
+            </Stack.Group>
+            <Stack.Group screenOptions={{ presentation: 'modal' }}>
+                <Stack.Screen 
+                    name="Game" 
+                    component={Game}
+                    options={{
+                        headerTitle: '',
+                        headerStyle: {
+                            backgroundColor: 'green',
+                        },
+                    }}
+                />
+            </Stack.Group>
         </Stack.Navigator>
     );
 }

@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { SafeAreaView, Text, Button, StyleSheet } from 'react-native';
 
 export default function SignIn({ navigation }) {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text>Sign In Screen</Text>
             <Button title="Sign In" onPress={() => navigation.navigate('Home')} />
             <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
-        </View>
+        </SafeAreaView>
     );
 }
+
+
+// function for the sign in button
+function signInBnt() {}
 
 const styles = StyleSheet.create({
     container: {
