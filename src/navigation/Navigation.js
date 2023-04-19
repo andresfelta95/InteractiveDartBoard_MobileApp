@@ -12,6 +12,7 @@
  */
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View } from 'react-native';
 
 // import the screens
@@ -21,19 +22,21 @@ import Game from '../screens/Game';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 
-// create the stack navigator
+// create the navigator constants
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 // create the navigation
 export default function Navigation() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
             <Stack.Screen 
                 name="SignIn" 
                 component={SignIn}
-                options={{
-                    headerShown: false,
-                }}
             />
             <Stack.Screen 
                 name="SignUp" 
@@ -43,24 +46,31 @@ export default function Navigation() {
                 }}
             />
             <Stack.Screen 
-                name="Home" 
-                component={Home}
-                options={{
-                    headerShown: false,
-                }}
-            />
-            <Stack.Screen 
-                name="Account" 
-                component={Account}
-                options={{
-                    headerShown: false,
-                }}
-            />
+                name="Home"
+            >
+                {() => (
+                    <Tab.Navigator>
+                        <Tab.Screen
+                            name="Home"
+                            component={Home}
+                            options={{
+                                headerShown: false,
+                            }}
+                        />
+                        <Tab.Screen 
+                            name="Account" 
+                            component={Account}
+                            options={{
+                                headerShown: false,
+                            }}
+                        />
+                    </Tab.Navigator>
+                )}
+            </Stack.Screen>
             <Stack.Screen 
                 name="Game" 
                 component={Game}
                 options={{
-                    headerShown: false,
                     headerTitle: '',
                     headerStyle: {
                         backgroundColor: 'green',

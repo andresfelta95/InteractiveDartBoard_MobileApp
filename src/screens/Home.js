@@ -26,8 +26,30 @@ export default function Home({ navigation }) {
             <Text style={styles.title}>Interactive Dartboard</Text>
             <Text style={styles.subtitle}>Home Screen</Text>
             <Button title="New Game" onPress={() => navigation.navigate('Game')} />
+            <Button title="Server Test" onPress={() => postRequest()} />
         </View>
     );
+}
+
+// function to do a post request to the server
+async function postRequest() {
+    // create the request
+    const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            valueX : 1,
+            valueY : 15,
+        }),
+    });
+
+    // get the response
+    const data = await response.json();
+    // Display the response in a popup
+    alert(JSON.stringify(data));
+    console.log(data);
 }
 
 // define your styles
