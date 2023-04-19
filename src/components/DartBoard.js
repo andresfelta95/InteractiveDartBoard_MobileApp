@@ -26,6 +26,16 @@ export default function DartBoard() {
         const { locationX, locationY } = event.nativeEvent;
         // add the location to the circleCoords
         setCircleCoords([...circleCoords, { x: locationX, y: locationY }]);
+        coordinateTransformMobileToEsp(locationX, locationY);
+        //test data 
+        let test1 = coordinateTransformEspToMobile(2, -4);
+        // setCircleCoords([...circleCoords, { x: test1[0], y: test1[1] }]);
+        let test2 = coordinateTransformEspToMobile(3, 5);
+        // setCircleCoords([...circleCoords, { x: test2[0], y: test2[1] }]);
+        let test3 = coordinateTransformEspToMobile(-13, -5);
+        // setCircleCoords([...circleCoords, { x: test3[0], y: test3[1] }]);
+        let test4 = coordinateTransformEspToMobile(-5, 17);
+        // setCircleCoords([...circleCoords, { x: test4[0], y: test4[1] }]);
     };
 
     // create the state to long press
@@ -66,8 +76,31 @@ export default function DartBoard() {
  * Bullseye: (0,0) -> (200,200)
  *  
 */
+// Transforming the app daa to the esp32
+function coordinateTransformMobileToEsp(locationX, locationY)
+{
+    console.log("mobile X : " + locationX + " mobile Y : " + locationY);
 
+    // subtrack the location from the origin then divide it from the scale 
+    espX = (locationX - 200) / 10;
+    espY = -(locationY - 200) / 10;
 
+    console.log("esp X : " + espX + " esp Y : " + espY); 
+}
+
+//  Transforming the esp32 data to the app
+function coordinateTransformEspToMobile(locationX, locationY)
+{
+    console.log("esp X : " + locationX + " esp Y : " + locationY);
+    
+    // mutiply the location from the esp by a scale of 10 then add the origin  
+    mobileX = locationX * 10 + 200;
+    moblieY = -locationY * 10 + 200;
+
+    console.log("mobile X : " + mobileX + " mobile Y : " + moblieY);
+
+    return [mobileX, moblieY]
+}
 
 // create the styles
 const styles = StyleSheet.create({
