@@ -13,7 +13,7 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // import the screens
 import Home from '../screens/Home';
@@ -56,6 +56,9 @@ export default function Navigation() {
                                 component={Home}
                                 options={{
                                     headerShown: false,
+                                    tabBarIcon: ({ color, size }) => (
+                                        <Icon name="home" color={color} size={size} />
+                                    ),
                                 }}
                             />
                             <Tab.Screen 
@@ -63,6 +66,9 @@ export default function Navigation() {
                                 component={Account}
                                 options={{
                                     headerShown: false,
+                                    tabBarIcon: ({ color, size }) => (
+                                        <Icon name="user" color={color} size={size} />
+                                    ),
                                 }}
                             />
                         </Tab.Navigator>
