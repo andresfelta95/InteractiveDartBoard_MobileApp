@@ -60,7 +60,6 @@ export default function SignUp({ navigation }) {
                 onChangeText={setPassword}
                 secureTextEntry = {!showPassword}
             />
-            {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}> */}
             <TouchableOpacity style={styles.button} onPress={() => signUpBnt()}>
                 <Text style={styles.buttonText}>Sign Up</Text>
             </TouchableOpacity>

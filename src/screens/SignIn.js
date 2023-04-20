@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SafeAreaView, Text, Button, StyleSheet, TextInput } from 'react-native';
+import { SafeAreaView, Text, Button, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 
 export default function SignIn({ navigation }) {
     const [loggedIn, setLoggedIn] = React.useState(false);
@@ -46,21 +46,25 @@ export default function SignIn({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text>Sign In Screen</Text>
-            <TextInput 
+            <Text style={styles.title}>Sign In Screen</Text>
+            <TextInput style={styles.input}
                 placeholder="Username"
                 value={username}
                 onChangeText={setUsername}
             />
-            <TextInput
+            <TextInput style={styles.input}
                 placeholder="Password"
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry = {!showPassword}
             />
             <Button title={showPassword ? "Hide Password" : "👁️"} onPress={togglePassword} />
-            <Button title="Sign In" onPress={() => signInBnt()} />
-            <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
+            <TouchableOpacity style={styles.button} onPress={() => signInBnt()}>
+                <Text style={styles.buttonText}>Sign In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUp')}>
+                <Text style={styles.buttonText}>Sign Up</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }
@@ -71,5 +75,25 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+    },title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 16,
+    },
+    input: {
+        height: 40,
+        width: 200,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginBottom: 16,
+    },
+    button: {
+        backgroundColor: '#000',
+        padding: 8,
+        borderRadius: 4,
+        marginBottom: 16,
+    },
+    buttonText: {
+        color: '#fff',
     },
 });
