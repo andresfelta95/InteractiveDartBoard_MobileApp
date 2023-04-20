@@ -47,7 +47,7 @@ export default function Navigation() {
                     }}
                 />
                 <Stack.Screen 
-                    name=""
+                    name="Home"
                 >
                     {() => (
                         <Tab.Navigator>
