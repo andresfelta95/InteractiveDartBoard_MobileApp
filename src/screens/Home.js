@@ -24,7 +24,8 @@ export default function Home({ navigation }) {
     async function newGame() {
         // create the request
         url = 'https://thor.cnt.sast.ca/~atangari/CMPE2550/Project/esp32Server.php';
-        const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
+        // const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ export default function Home({ navigation }) {
         <View style={styles.container}>
             <Text style={styles.title}>Interactive Dartboard</Text>
             <Text style={styles.subtitle}>Home Screen</Text>
-            <Button title="New Game" onPress={() => navigation.navigate('Game')} />
+            <Button title="New Game" onPress={() => newGame()} />
             <Button title="Server Test" onPress={() => postRequest()} />
         </View>
     );

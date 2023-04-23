@@ -36,7 +36,9 @@ function Game() {
         // create the interval
         const interval = setInterval(() => {
             // create the request
-            fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
+            url = 'https://thor.cnt.sast.ca/~atangari/CMPE2550/Project/esp32Server.php';
+            // fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
+            fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,8 +50,13 @@ function Game() {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    // set the game context
-                    setGame(data);
+                    console.log('Success:', data);
+                    // Add the dart locations to the game context
+                    // into the dartLocations: []
+                    // setGame({
+                    //     ...game,
+                    //     dartLocations: data,
+                    // });
                 })
                 .catch((error) => {
                     console.error('Error:', error);
