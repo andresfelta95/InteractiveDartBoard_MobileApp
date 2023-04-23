@@ -22,11 +22,27 @@ export const GameContext = React.createContext();
 export function GameProvider({ children }) {
     // create the game state
     const [game, setGame] = React.useState({
-        score: 301,
-        round: 1,
-        player: 1,
-        players: 2,
-        scores: [],
+        gameStatus: false,
+        gameID: 0,
+        players: [],
+        currentPlayer: 0,
+        currentRound: 0,
+        currentScore: 0,
+        darts: [],
+
+        // the game settings
+        numberOfPlayers: 0,
+        numberOfRounds: 0,
+        startingScore: 0,
+
+        // the game results
+        results: [],
+
+        // the dart locations
+        dartLocations: [],
+
+        // the dart scores
+        dartScores: [],
     });
 
     // create the provider

@@ -20,6 +20,33 @@ export default function Home({ navigation }) {
     // get the game context
     const { game, setGame } = React.useContext(GameContext);
 
+    // Function to create a new game in the server
+    async function newGame() {
+        // create the request
+        url = 'https://thor.cnt.sast.ca/~atangari/CMPE2550/Project/esp32Server.php';
+        const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                action: 'newGame',
+            }),
+        });
+
+        // get the response
+        const data = await response.json();
+        // Display the response in a popup
+        alert(JSON.stringify(data));
+        console.log(data);
+
+        // set the game context
+        // setGame(data);
+
+        // navigate to the game screen
+        navigation.navigate('Game');
+    }
+
     // create the home screen
     return (
         <View style={styles.container}>

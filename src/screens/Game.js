@@ -30,6 +30,35 @@ function Game() {
     const insets = useSafeAreaInsets();
     // get the game context
     const { game, setGame } = React.useContext(GameContext);
+
+    // keep contacting the server to get the dart locations
+    React.useEffect(() => {
+        // create the interval
+        const interval = setInterval(() => {
+            // create the request
+            fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'getDarts',
+                    gameID: game.gameID,
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    // set the game context
+                    setGame(data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }, 1000);
+
+        // clear the interval
+        return () => clearInterval(interval);
+    }, []);
     
     // create the game screen
     return (
