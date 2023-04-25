@@ -30,6 +30,7 @@ function Game() {
     const insets = useSafeAreaInsets();
     // get the game context
     const { game, setGame } = React.useContext(GameContext);
+    const { dartLocations } = game; // get the dart locations from the game context
 
     // keep contacting the server to get the dart locations
     React.useEffect(() => {
@@ -50,13 +51,16 @@ function Game() {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log('Success:', data);
+                    console.log('Success:', data.dartLocation.x, data.dartLocation.y);
+                    let newDartLocation = [data.dartLocation.x, data.dartLocation.y]
                     // Add the dart locations to the game context
                     // into the dartLocations: []
-                    // setGame({
-                    //     ...game,
-                    //     dartLocations: data,
-                    // });
+                    setGame(prevState => {
+                        return {
+                            ...prevState,
+                            dartLocations: [...prevState.dartLocations, newDartLocation],
+                        };
+                    });
                 })
                 .catch((error) => {
                     console.error('Error:', error);

@@ -14,11 +14,41 @@
 import * as React from 'react';
 // import react native components
 import { SafeAreaView, Image, StyleSheet, TouchableOpacity } from 'react-native';
+// GameProvider
+import { GameContext } from '../providers/GameProvider';
 
 // create the dartboard component
-export default function DartBoard() {
+export default function DartBoard(props) {
     // create the state to hold the coordinates of the circles
     const [circleCoords, setCircleCoords] = React.useState([]);
+    // create the state to hold the game state
+    const { game, setGame } = React.useContext(GameContext);
+    // Get the game state from the context
+    const { dartLocations } = game;
+    console.log(dartLocations);
+
+    // Effect to update get the dart locations from the state and update the circleCoords
+    React.useEffect(() => {
+        // create the array to hold the circle coordinates
+        let newCircleCoords = [];
+        // check if the dartLocations is not empty
+        if (dartLocations.length > 0) {
+            // loop through the dartLocations
+            for (let i = 0; i < dartLocations.length; i++) {
+                // get the dartLocation
+                const dartLocation = dartLocations[i];
+                // get the x and y coordinates
+                const x = dartLocation[0];
+                const y = dartLocation[1];
+                // transform the coordinates to mobile
+                const mobileCoords = coordinateTransformEspToMobile(x, y);
+                // add the coordinates to the newCircleCoords
+                newCircleCoords.push({ x: mobileCoords[0], y: mobileCoords[1] });
+            }
+        }
+        // update the circleCoords
+        setCircleCoords(newCircleCoords);
+    }, [dartLocations]);
 
     // create the state to hold the coordinates of the circles
     const handlePress = (event) => {

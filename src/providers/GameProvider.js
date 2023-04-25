@@ -11,6 +11,9 @@
  * 6. Import the context into the Home screen
  * 7. Get the game state from the context
  * 8. Import the context into the DartBoard component
+ * 9. Get the game state from the context
+ * 10. Import the context into the ScoreBoard component
+ * 11. Get the game state from the context
  */
 
 import * as React from 'react';
@@ -22,29 +25,21 @@ export const GameContext = React.createContext();
 export function GameProvider({ children }) {
     // create the game state
     const [game, setGame] = React.useState({
-        gameStatus: false,
-        gameID: 0,
-        players: [],
-        currentPlayer: 0,
-        currentRound: 0,
-        currentScore: 0,
-        darts: [],
+        // create the dart locations array
+        dartLocations: [[5,10]],
+        // create the dart count
+        dartCount: 0,
+        // create the score
+        score: 0,
+        // create the multiplier
+        multiplier: 1,
+        // create the dart history
+        dartHistory: [],
+        // game id
+        gameId: 0,
 
-        // the game settings
-        numberOfPlayers: 0,
-        numberOfRounds: 0,
-        startingScore: 0,
-
-        // the game results
-        results: [],
-
-        // the dart locations
-        dartLocations: [],
-
-        // the dart scores
-        dartScores: [],
     });
-
+    console.log(game.dartLocations);
     // create the provider
     return (
         <GameContext.Provider value={{ game, setGame }}>
