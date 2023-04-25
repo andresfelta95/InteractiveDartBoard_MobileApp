@@ -21,6 +21,8 @@ import Account from '../screens/Account';
 import Game from '../screens/Game';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
+import GettingAnotherPlayer from '../screens/GettingAnotherPlayer';
+import CreatingSecondPlayer from '../screens/CreatingSecondPlayer';
 
 // create the navigator constants
 const Stack = createNativeStackNavigator();
@@ -83,6 +85,30 @@ export default function Navigation() {
                         headerTitle: '',
                         headerStyle: {
                             backgroundColor: 'green',
+                        },
+                    }}
+                />
+            </Stack.Group>
+            <Stack.Group screenOptions={{ presentation: 'modal' }}>
+                <Stack.Screen 
+                    name="GettingAnotherPlayer" 
+                    component={GettingAnotherPlayer}
+                    options={{
+                        headerTitle: '',
+                        headerStyle: {
+                            backgroundColor: 'red',
+                        },
+                    }}
+                />
+            </Stack.Group>
+            <Stack.Group screenOptions={{ presentation: 'modal' }}>
+                <Stack.Screen 
+                    name="CreatingSecondPlayer" 
+                    component={CreatingSecondPlayer}
+                    options={{
+                        headerTitle: '',
+                        headerStyle: {
+                            backgroundColor: 'red',
                         },
                     }}
                 />

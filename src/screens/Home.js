@@ -10,10 +10,11 @@
  * 
  */
 import * as React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, TextInput } from 'react-native';
 
 // import the game context
 import { GameContext } from '../providers/GameProvider';
+// import { TextInput } from 'react-native-web';
 
 // create the home screen
 export default function Home({ navigation }) {
@@ -23,9 +24,10 @@ export default function Home({ navigation }) {
     // Function to create a new game in the server
     async function newGame() {
         // create the request
+        
         url = 'https://thor.cnt.sast.ca/~atangari/CMPE2550/Project/esp32Server.php';
-        // const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
-        const response = await fetch(url, {
+        const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/game.php', {
+        //const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +45,7 @@ export default function Home({ navigation }) {
 
         // set the game context
         // setGame(data);
-
+        
         // navigate to the game screen
         navigation.navigate('Game');
     }
@@ -51,9 +53,14 @@ export default function Home({ navigation }) {
     // create the home screen
     return (
         <View style={styles.container}>
+            <TextInput style={styles.input} 
+                placeholder="ReadOnly"
+                value={"Readyonly"}
+             />
             <Text style={styles.title}>Interactive Dartboard</Text>
             <Text style={styles.subtitle}>Home Screen</Text>
-            <Button title="New Game" onPress={() => newGame()} />
+            
+            <Button title="New Game" onPress={() => navigation.navigate('GettingAnotherPlayer')} />
             <Button title="Server Test" onPress={() => postRequest()} />
         </View>
     );
