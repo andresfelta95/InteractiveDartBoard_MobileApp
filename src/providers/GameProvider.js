@@ -26,7 +26,7 @@ export function GameProvider({ children }) {
     // create the game state
     const [game, setGame] = React.useState({
         // create the dart locations array
-        dartLocations: [[5,10]],
+        dartLocations: [],
         // create the dart count
         dartCount: 0,
         // create the score

@@ -163,8 +163,8 @@ const styles = StyleSheet.create({
         width: 400,
     },
     circle: {
-        width: 5,
-        height: 5,
+        width: 10,
+        height: 10,
         borderRadius: 10,
         backgroundColor: 'blue',
         position: 'absolute',

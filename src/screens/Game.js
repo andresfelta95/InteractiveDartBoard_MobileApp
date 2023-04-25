@@ -58,7 +58,8 @@ function Game() {
                     setGame(prevState => {
                         return {
                             ...prevState,
-                            dartLocations: [...prevState.dartLocations, newDartLocation],
+                            // If the dartLocations array has 3 elements, clear it and store the new dart location
+                            dartLocations: prevState.dartLocations.length === 3 ? [newDartLocation] : [...prevState.dartLocations, newDartLocation],
                         };
                     });
                 })

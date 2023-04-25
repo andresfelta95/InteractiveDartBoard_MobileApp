@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, TextInput } from 'react-native';
+import { Text, SafeAreaView, StyleSheet, Button, TextInput } from 'react-native';
+import { GameContext } from '../providers/GameProvider';
 
 
 export default function GettingAnotherPlayer({ navigation }) {
@@ -34,29 +35,72 @@ export default function GettingAnotherPlayer({ navigation }) {
         }
     }
 
+    
+
     async function CreatingSecondPlayer() {
         
         navigation.navigate('CreatingSecondPlayer');
     }
 
     return (
-        <View>
-            <Text>Player 1</Text>
-            <TextInput 
+        <SafeAreaView stryle={styles.container}>
+            <Text style={styles.title}>
+                Player 1
+            </Text>
+            <TextInput
+                style={styles.input}
                 placeholder="Player 1"
                 //value={route.params.username}
                 editable={false}
              />
 
-            <Text>Player 2</Text>
-            <TextInput 
+            <Text style={styles.title}>Player 2</Text>
+            <TextInput
+                style={styles.input}
                 placeholder="Player 2"
                 value={username}
                 onChangeText={setUsername}
              />
             
-            <Button title="Add Player" onPress={() => AddPlayer()} />
+            <Button 
+                style={styles.button}
+                title="Add Player" 
+                onPress={() => AddPlayer()} 
+            />
             <Button title="Create Player" onPress={() => CreatingSecondPlayer()} />
-        </View>
+        </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#0A0',
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 16,
+    },
+    input: {
+        height: 40,
+        width: 200,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginBottom: 16,
+    },
+    button: {
+        backgroundColor: '#000',
+        padding: 8,
+        borderRadius: 4,
+        marginBottom: 16,
+    },
+    buttonText: {
+        color: '#fff',
+    },
+    link: {
+        color: '#0000EE',
+    },
+});

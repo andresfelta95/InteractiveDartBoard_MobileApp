@@ -58,7 +58,11 @@ export default function SignIn({ navigation }) {
                 onChangeText={setPassword}
                 secureTextEntry = {!showPassword}
             />
-            <Button title={showPassword ? "Hide Password" : "👁️"} onPress={togglePassword} />
+            <Button 
+                style={styles.button}
+                title={showPassword ? "Hide Password" : "👁️"} 
+                onPress={togglePassword} 
+            />
             <TouchableOpacity style={styles.button} onPress={() => signInBnt()}>
                 <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>

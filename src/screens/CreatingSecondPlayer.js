@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 export default function CreatingSecondPlayer({ navigation }) {
 
@@ -42,7 +42,7 @@ export default function CreatingSecondPlayer({ navigation }) {
         };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Sign Up</Text>
             <TextInput style={styles.input} 
                 placeholder="Username" 
@@ -63,7 +63,7 @@ export default function CreatingSecondPlayer({ navigation }) {
             <TouchableOpacity style={styles.button} onPress={() => signUpBnt()}>
                 <Text style={styles.buttonText}>Sign Up</Text>
             </TouchableOpacity>
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#0A0',
     },
     title: {
         fontSize: 24,
