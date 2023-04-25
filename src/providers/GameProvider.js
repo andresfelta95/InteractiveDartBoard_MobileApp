@@ -33,10 +33,10 @@ export function GameProvider({ children }) {
         score: 0,
         // create the multiplier
         multiplier: 1,
-        // create the dart history
-        dartHistory: [],
         // game id
         gameId: 0,
+        // UserName
+        userName: '',
 
     });
     console.log(game.dartLocations);

@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { SafeAreaView, Text, Button, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+// Get the game context
+import { GameContext } from '../providers/GameProvider';
 
 export default function SignIn({ navigation }) {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [showPassword, setShowPassword] = React.useState(false);
+    // Get the game context
+    const { game, setGame } = React.useContext(GameContext);
 
     // create the sign in function
     // function for the sign in button
@@ -52,17 +56,20 @@ export default function SignIn({ navigation }) {
                 value={username}
                 onChangeText={setUsername}
             />
-            <TextInput style={styles.input}
-                placeholder="Password"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry = {!showPassword}
-            />
-            <Button 
-                style={styles.button}
-                title={showPassword ? "Hide Password" : "👁️"} 
-                onPress={togglePassword} 
-            />
+            <SafeAreaView style={styles.container2}>
+                <TextInput style={styles.input}
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry = {!showPassword}
+                />
+                <TouchableOpacity 
+                    style={styles.button} 
+                    onPress={togglePassword}
+                >
+                    <Text style={styles.buttonText}>👁️</Text>
+                </TouchableOpacity>
+            </SafeAreaView>
             <TouchableOpacity style={styles.button} onPress={() => signInBnt()}>
                 <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>
@@ -79,7 +86,14 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-    },title: {
+        backgroundColor:'#99F',
+    },
+    container2: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    title: {
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 16,
@@ -87,7 +101,7 @@ const styles = StyleSheet.create({
     input: {
         height: 40,
         width: 200,
-        borderColor: 'gray',
+        borderColor: '#000',
         borderWidth: 1,
         marginBottom: 16,
     },
