@@ -53,10 +53,6 @@ export default function Home({ navigation }) {
     // create the home screen
     return (
         <View style={styles.container}>
-            <TextInput style={styles.input} 
-                placeholder="ReadOnly"
-                value={"Readyonly"}
-             />
             <Text style={styles.title}>Interactive Dartboard</Text>
             <Text style={styles.subtitle}>Home Screen</Text>
             
