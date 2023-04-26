@@ -10,17 +10,17 @@
 export async function calclateScore(pointX, pointY){
     let score = 0;
     let distance = 0;
-
+    console.log("calclating");
     // using Pythagoras formula to calculate the distance to the centre.
-    distance  = math.sqrt(math.pow(pointX,2) + math.pow(pointY,2));
+    distance  = Math.sqrt(Math.pow(pointX,2) + Math.pow(pointY,2));
     console.log(distance);
 
     //   #Use SOCATOA to calculate the angle matching the arrow position
-    let angle = math.degres(math.atan2(pointX, pointY));
+    let angle = Math.atan2(pointX, pointY) * (180 / Math.PI);
     if (angle < 0){
         angle+=360
     }
-    print(angle) 
+    console.log(angle); 
 
     if(angle < 9){
         score = 6;
@@ -66,18 +66,19 @@ export async function calclateScore(pointX, pointY){
         score = 6;
     }
 
-    // if(distance > 0 && distance < 10){
-    //     score = 50;
-    // }else if(distance > 10 && distance < 20){
-    //     score = 25;
-    // }else if(distance > 73 && distance < 84){
-    //     score = score * 3;
-    // }else if(distance > 134 && distance < 144){
-    //     score = score * 2;
-    // }else if(distance > 144){
-    //     score = 0;
-    // }
-
+    
+    if(distance > 0 && distance < 1){
+        score = 50;
+    }else if(distance > 1 && distance < 2.5){
+        score = 25;
+    }else if(distance > 7 && distance < 8.5){
+        score = score * 3;
+    }else if(distance > 13 && distance < 14.6){
+        score = score * 2;
+    }else if(distance > 14.6){
+        score = 0;
+    }
+    console.log(score);
     return score; 
 }
 
