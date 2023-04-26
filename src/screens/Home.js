@@ -10,7 +10,7 @@
  * 
  */
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 // import the game context
 import { GameContext } from '../providers/GameProvider';
@@ -25,32 +25,15 @@ export default function Home({ navigation }) {
         <View style={styles.container}>
             <Text style={styles.title}>Interactive Dartboard</Text>
             <Text style={styles.subtitle}>Home Screen</Text>
-            
-            <Button title="New Game" onPress={() => navigation.navigate('GettingAnotherPlayer')} />
-            <Button title="Server Test" onPress={() => postRequest()} />
+            <TouchableOpacity onPress={() => navigation.navigate('GettingAnotherPlayer')}>
+                <Image
+                    style={styles.image}
+                    source={require('../assets/images/dartboard.png')}
+                />
+            </TouchableOpacity>
+                
         </View>
     );
-}
-
-// function to do a post request to the server
-async function postRequest() {
-    // create the request
-    const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            valueX : 1,
-            valueY : 15,
-        }),
-    });
-
-    // get the response
-    const data = await response.json();
-    // Display the response in a popup
-    alert(JSON.stringify(data));
-    console.log(data);
 }
 
 // define your styles
@@ -68,6 +51,11 @@ const styles = StyleSheet.create({
     subtitle: {
         fontSize: 16,
         fontWeight: 'normal',
+    },
+    image: {
+        width: 200,
+        height: 200,
+        resizeMode: 'contain',
     },
 });
 
