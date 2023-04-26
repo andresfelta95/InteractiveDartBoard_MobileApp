@@ -17,8 +17,13 @@ import { GameContext } from '../providers/GameProvider';
  * 3. Poinst per round
  * @returns the score board
  */
-function ScoreBoard(props){
-    const { players, scores } = props;
+function ScoreBoard(){
+    // get the game context
+    const { game, setGame } = React.useContext(GameContext);
+    // get the players
+    const { player1, player2 } = game;
+    // get the scores
+    const { player1Score, player2Score } = game;
     // create the score board
     return (
         <SafeAreaView style={styles.container}>
