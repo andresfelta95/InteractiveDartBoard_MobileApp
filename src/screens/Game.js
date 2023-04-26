@@ -121,9 +121,9 @@ function Game() {
         // create the interval
         const interval = setInterval(() => {
             // create the request
-            url = 'https://thor.cnt.sast.ca/~atangari/CMPE2550/Project/esp32Server.php';
-            fetch(url, {
-                // fetch('https://thor.cnt.sast.ca/~kevenlou/distance/distance.php', {
+            // url = 'https://thor.cnt.sast.ca/~atangari/CMPE2550/Project/esp32Server.php';
+            // fetch(url, {
+                 fetch('https://thor.cnt.sast.ca/~kevenlou/distance/game.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
