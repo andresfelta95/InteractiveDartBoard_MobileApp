@@ -24,13 +24,27 @@ function ScoreBoard(){
     const { player1, player2 } = game;
     // get the scores
     const { player1Score, player2Score } = game;
+    // get the points per round from the server
+    const { pointsPerRound } = game;
+    // get the player turn
+    const { playerTurn } = game;
+    // get the dart locations
+    const { dartLocations } = game;
+    // get the dart count
+    const { dartCount } = game;
+
     // create the score board
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Score Board</Text>
-            <Text style={styles.subtitle}>Players</Text>
-            <Text style={styles.subtitle}>Scores</Text>
-            <Text style={styles.subtitle}>Points per round</Text>
+            <Text style={styles.subtitle}>{player1}</Text>
+            <Text style={styles.subtitle}>{player2}</Text>
+            <Text style={styles.subtitle}>{player1Score}</Text>
+            <Text style={styles.subtitle}>{player2Score}</Text>
+            <Text style={styles.subtitle}>{pointsPerRound}</Text>
+            <Text style={styles.subtitle}>{playerTurn}</Text>
+            <Text style={styles.subtitle}>{dartLocations}</Text>
+            <Text style={styles.subtitle}>{dartCount}</Text>
         </SafeAreaView>
     );
 }

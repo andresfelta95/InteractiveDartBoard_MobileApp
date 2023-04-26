@@ -32,8 +32,13 @@ export function GameProvider({ children }) {
         // create the players score
         player1Score: 301,
         player2Score: 301,
-        // create the multiplier
-        multiplier: 1,
+        // create the player turn
+        playerTurn: 1,
+        // create the points per round
+        pointsPerRound: 0,
+        // create the players
+        player1: 'Player 1',
+        player2: 'Player 2',
         // game id
         gameId: 0,
         // UserName
