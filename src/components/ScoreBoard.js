@@ -35,35 +35,82 @@ function ScoreBoard(){
 
     // create the score board
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.Table}>
             <Text style={styles.title}>Score Board</Text>
-            <Text style={styles.subtitle}>{player1}</Text>
-            <Text style={styles.subtitle}>{player2}</Text>
-            <Text style={styles.subtitle}>{player1Score}</Text>
-            <Text style={styles.subtitle}>{player2Score}</Text>
-            <Text style={styles.subtitle}>{pointsPerRound}</Text>
-            <Text style={styles.subtitle}>{playerTurn}</Text>
-            <Text style={styles.subtitle}>{dartLocations}</Text>
-            <Text style={styles.subtitle}>{dartCount}</Text>
+            <Text style={styles.title}>Player Turn: {playerTurn}</Text>
+            <SafeAreaView style={styles.Header}>
+                <Text style={styles.Cell}>Player</Text>
+                <Text style={styles.Cell}>Score</Text>
+                <Text style={styles.Cell}>Points Per Round</Text>
+            </SafeAreaView>
+            <SafeAreaView style={styles.Row}>
+                <Text style={styles.Cell}>{player1}</Text>
+                <Text style={styles.Cell}>{player1Score}</Text>
+                {/* if player two turn show 0 */}
+                <Text style={styles.Cell}>{playerTurn == 2 ? 0 : pointsPerRound}</Text>
+            </SafeAreaView>
+            <SafeAreaView style={styles.Row}>
+                <Text style={styles.Cell}>{player2}</Text>
+                <Text style={styles.Cell}>{player2Score}</Text>
+                {/* if player one turn show 0 */}
+                <Text style={styles.Cell}>{playerTurn == 1 ? 0 : pointsPerRound}</Text>
+            </SafeAreaView>
         </SafeAreaView>
     );
 }
 
 // create the styles
 const styles = StyleSheet.create({
-    container: {
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    Table: {
         flex: 1,
+        flexDirection: 'column',
+        backgroundColor: 'beige',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'green',
+        borderWidth: 1,
+        borderColor: '#000',
+        borderRadius: 10,
+        margin: 10,
+        padding: 10,
     },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
+    Header: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: 'beige',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10,
+        padding: 10,
     },
-    subtitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
+    Row: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: 'beige',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 10,
+        padding: 10,
+    },
+    Cell: {
+        flex: 1,
+        // Ensure the background color spans inside of the border
+        backgroundColor: 'beige',
+        // Set the border width
+        borderWidth: 1,
+        // Set the border color transparent so you can see the background color through the border
+        borderColor: '#000',
+        // Set the border Radius
+        borderRadius: 20,
+        // Set the padding
+        padding: 50,
+        // Set the margin
+        margin: 10,
+        // Set the text alignment
+        textAlign: 'center',
     },
 });
 

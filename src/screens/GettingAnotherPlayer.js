@@ -23,7 +23,7 @@ export default function GettingAnotherPlayer({ navigation }) {
             },
             body: JSON.stringify({
                 action: 'addingSecondPlayer',
-                username: username,
+                username: username2,
             }),
         });
 

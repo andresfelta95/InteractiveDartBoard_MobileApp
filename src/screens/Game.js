@@ -156,6 +156,7 @@ function Game() {
                                 player2Score: prevState.playerTurn === 2 ? (prevState.player2Score - score < 0 ? prevState.player2Score : prevState.player2Score - score) : prevState.player2Score,
                                 // if the dart count is 3, change the player turn
                                 playerTurn: prevState.dartCount === 3 ? (prevState.playerTurn === 1 ? 2 : 1) : prevState.playerTurn,
+                                pointsPerRound: score,
                             };
                         });
                     } else {
