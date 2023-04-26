@@ -135,24 +135,31 @@ function Game() {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log('Success:', data.dartLocation.x, data.dartLocation.y);
-                    const score = calclateScore(data.dartLocation.x, data.dartLocation.y);
-                    console.log('point', score);
+                    if (data.success) {
+                        console.log('Success:', data.dartLocation.x, data.dartLocation.y);
+                        const score = calclateScore(data.dartLocation.x, data.dartLocation.y);
+                        console.log('point', score);
 
 
-                    let newDartLocation = [data.dartLocation.x, data.dartLocation.y]
-                    // Add the dart locations to the game context
-                    // into the dartLocations: []
-                    setGame(prevState => {
-                        return {
-                            ...prevState,
-                            // If the dartLocations array has 3 elements, clear it and store the new dart location
-                            dartLocations: prevState.dartLocations.length === 3 ? [newDartLocation] : [...prevState.dartLocations, newDartLocation],
-                            // Set the dart count to the length of the dartLocations array
-                            dartCount: prevState.dartLocations.length,
-                            // depending on the dart count, set the player score
-                        };
-                    });
+                        let newDartLocation = [data.dartLocation.x, data.dartLocation.y]
+                        // Add the dart locations to the game context
+                        // into the dartLocations: []
+                        setGame(prevState => {
+                            return {
+                                ...prevState,
+                                // If the dartLocations array has 3 elements, clear it and store the new dart location
+                                dartLocations: prevState.dartLocations.length === 3 ? [newDartLocation] : [...prevState.dartLocations, newDartLocation],
+                                // Set the dart count to the length of the dartLocations array
+                                dartCount: prevState.dartLocations.length,
+                                // depending on the player turn, deduct the score from the player score, if the deduction is less than 0, do not deduct
+                                player1Score: prevState.playerTurn === 1 ? (prevState.player1Score - score < 0 ? prevState.player1Score : prevState.player1Score - score) : prevState.player1Score,
+                                player2Score: prevState.playerTurn === 2 ? (prevState.player2Score - score < 0 ? prevState.player2Score : prevState.player2Score - score) : prevState.player2Score,
+
+                            };
+                        });
+                    } else {
+                        console.log('No darts thrown');
+                    }
                 })
                 .catch((error) => {
                     console.error('Error:', error);
