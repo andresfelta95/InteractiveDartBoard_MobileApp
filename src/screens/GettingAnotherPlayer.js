@@ -14,8 +14,8 @@ export default function GettingAnotherPlayer({ navigation }) {
         // create the request
         
         //url = 'https://thor.cnt.sast.ca/~atangari/CMPE2550/Project/esp32Server.php';
-        const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/game.php', {
         //const response = await fetch(url, {
+        const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/game.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
