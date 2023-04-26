@@ -5,6 +5,7 @@ import { GameContext } from '../providers/GameProvider';
 
 export default function GettingAnotherPlayer({ navigation }) {
     const [username, setUsername] = React.useState('');
+    const [username2, setUsername2] = React.useState('');
     // Get the game context
     const { game, setGame } = React.useContext(GameContext);
     // Get the state of the game
@@ -32,6 +33,18 @@ export default function GettingAnotherPlayer({ navigation }) {
         console.log(data);
 
         if(data.success){
+            //  Set the game context
+            setGame(prevState => ({
+                ...prevState,
+                loggedIn: true,
+                userName: username,
+                dartCount: 0,
+                player1Score: 301,
+                player2Score: 301,
+                player1: prevState.userName,
+                player2: username,
+            }));
+                
             navigation.navigate('Game');
             
         }else if(data.failed){
@@ -53,8 +66,8 @@ export default function GettingAnotherPlayer({ navigation }) {
             <TextInput
                 style={styles.input}
                 placeholder="Player 2"
-                value={username}
-                onChangeText={setUsername}
+                value={username2}
+                onChangeText={setUsername2}
              />
             
             <Button 
