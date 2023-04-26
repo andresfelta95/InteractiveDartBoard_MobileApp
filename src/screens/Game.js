@@ -154,7 +154,8 @@ function Game() {
                                 // depending on the player turn, deduct the score from the player score, if the deduction is less than 0, do not deduct
                                 player1Score: prevState.playerTurn === 1 ? (prevState.player1Score - score < 0 ? prevState.player1Score : prevState.player1Score - score) : prevState.player1Score,
                                 player2Score: prevState.playerTurn === 2 ? (prevState.player2Score - score < 0 ? prevState.player2Score : prevState.player2Score - score) : prevState.player2Score,
-
+                                // if the dart count is 3, change the player turn
+                                playerTurn: prevState.dartCount === 3 ? (prevState.playerTurn === 1 ? 2 : 1) : prevState.playerTurn,
                             };
                         });
                     } else {
