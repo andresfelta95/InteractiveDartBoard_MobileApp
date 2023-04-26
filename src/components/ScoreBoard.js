@@ -6,6 +6,8 @@ import * as React from 'react';
 // import react native components to create the score board
 import { SafeAreaView, Text, StyleSheet } from 'react-native';
 import { TableHTMLAttributes } from 'react';
+// import the game context
+import { GameContext } from '../providers/GameProvider';
 
 /**
  * This function is responsible for creating the score board
