@@ -34,7 +34,7 @@ import { SafeAreaProvider} from 'react-native-safe-area-context';
 //  Import the game provider and the game context
 import GameProvider, { GameContext } from './src/providers/GameProvider';
 
-export default function App() {    
+export default function App() {
     // return the app
     return (
       <GameProvider>

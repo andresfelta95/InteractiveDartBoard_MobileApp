@@ -18,10 +18,6 @@ export default function GettingAnotherPlayer({ navigation }) {
         //const response = await fetch(url, {
         const response = await fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/game.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Cookie': 'PHPSESSID=123',
-            },
             body: JSON.stringify({
                 action: 'addingSecondPlayer',
                 username: username2,

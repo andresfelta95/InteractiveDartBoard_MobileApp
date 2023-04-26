@@ -18,8 +18,7 @@ export default function SignIn({ navigation }) {
         fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/service.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Cookie': 'PHPSESSID=123',
+                'Cookie': 'PHPSESSID=1234567890',
             },
             body: JSON.stringify({
                 // The server expects an action, and a username and password

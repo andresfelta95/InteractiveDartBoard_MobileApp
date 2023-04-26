@@ -57,49 +57,46 @@ function Game() {
         }
         console.log(angle);
 
-        if (angle < 9) {
+        if (angle < 18 && angle >= 0) {
             score = 6;
-        } else if (angle < 27 && angle >= 9) {
+        } else if (angle < 36 && angle >= 18) {
             score = 13;
-        } else if (angle < 45 && angle >= 27) {
+        } else if (angle < 54 && angle >= 36) {
             score = 4;
-        } else if (angle < 63 && angle >= 45) {
+        } else if (angle < 72 && angle >= 54) {
             score = 18;
-        } else if (angle < 81 && angle >= 63) {
+        } else if (angle < 90 && angle >= 72) {
             score = 1;
-        } else if (angle < 99 && angle >= 81) {
+        } else if (angle < 108 && angle >= 90) {
             score = 20;
-        } else if (angle < 117 && angle >= 99) {
+        } else if (angle < 126 && angle >= 108) {
             score = 5;
-        } else if (angle < 135 && angle >= 117) {
+        } else if (angle < 144 && angle >= 126) {
             score = 12;
-        } else if (angle < 153 && angle >= 135) {
+        } else if (angle < 162 && angle >= 144) {
             score = 9;
-        } else if (angle < 171 && angle >= 153) {
+        } else if (angle < 180 && angle >= 162) {
             score = 14;
-        } else if (angle < 189 && angle >= 171) {
+        } else if (angle < 198 && angle >= 180) {
             score = 11;
-        } else if (angle < 207 && angle >= 189) {
+        } else if (angle < 216 && angle >= 198) {
             score = 8;
-        } else if (angle < 225 && angle >= 207) {
+        } else if (angle < 234 && angle >= 216) {
             score = 16;
-        } else if (angle < 243 && angle >= 225) {
+        } else if (angle < 252 && angle >= 234) {
             score = 7;
-        } else if (angle < 261 && angle >= 243) {
+        } else if (angle < 270 && angle >= 252) {
             score = 19;
-        } else if (angle < 279 && angle >= 261) {
+        } else if (angle < 288 && angle >= 270) {
             score = 3;
-        } else if (angle < 297 && angle >= 279) {
+        } else if (angle < 306 && angle >= 288) {
             score = 17;
-        } else if (angle < 315 && angle >= 297) {
+        } else if (angle < 324 && angle >= 306) {
             score = 2;
-        } else if (angle < 333 && angle >= 315) {
+        } else if (angle < 342 && angle >= 324) {
             score = 15;
-        } else if (angle < 351 && angle >= 333) {
+        } else if (angle <= 360 && angle >= 342) {
             score = 10;
-        } else if (angle < 360 && angle >= 351) {
-            score = 6;
-        }
 
 
         if (distance > 0 && distance < 1) {
@@ -125,11 +122,6 @@ function Game() {
             // fetch(url, {
                  fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/game.php', {
                 method: 'POST',
-                // Add the header with a cookie with a session ID
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Cookie': 'PHPSESSID=123',
-                },
                 body: JSON.stringify({
                     action: 'getDarts',
                     gameID: game.gameID,
