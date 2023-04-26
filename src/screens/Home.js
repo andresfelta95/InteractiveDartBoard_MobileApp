@@ -10,7 +10,7 @@
  * 
  */
 import * as React from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 // import the game context
 import { GameContext } from '../providers/GameProvider';
@@ -22,17 +22,19 @@ export default function Home({ navigation }) {
 
     // create the home screen
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Interactive Dartboard</Text>
             <Text style={styles.subtitle}>Home Screen</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('GettingAnotherPlayer')}>
+            <TouchableOpacity 
+                style={styles.button}
+                onPress={() => navigation.navigate('GettingAnotherPlayer')}>
                 <Image
                     style={styles.image}
                     source={require('../assets/DartBoardIcon.png')}
                 />
             </TouchableOpacity>
                 
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -47,15 +49,29 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
+        // Position the title at the top of the screen
+        position: 'absolute',
+        top: 100,
     },
     subtitle: {
         fontSize: 16,
         fontWeight: 'normal',
     },
     image: {
-        width: 200,
-        height: 200,
+        width: 100,
+        height: 100,
         resizeMode: 'contain',
+    },
+    button: {
+        // Position the button at the bottom of the screen
+        position: 'absolute',
+        bottom: 0,
+        // Set the button's padding
+        padding: 8,
+        // Set the button's border radius
+        borderRadius: 4,
+        // Set the button's margin
+        marginBottom: 16,
     },
 });
 

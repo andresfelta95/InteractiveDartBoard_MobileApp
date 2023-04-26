@@ -5,7 +5,6 @@
 import * as React from 'react';
 // import react native components to create the score board
 import { SafeAreaView, Text, StyleSheet } from 'react-native';
-import { TableHTMLAttributes } from 'react';
 // import the game context
 import { GameContext } from '../providers/GameProvider';
 
@@ -32,6 +31,14 @@ function ScoreBoard(){
     const { dartLocations } = game;
     // get the dart count
     const { dartCount } = game;
+    console.log(player1);
+    console.log(player2);
+    console.log(player1Score);
+    console.log(player2Score);
+    console.log(pointsPerRound);
+    console.log(playerTurn);
+    console.log(dartLocations);
+    console.log(dartCount);
 
     // create the score board
     return (
@@ -39,9 +46,16 @@ function ScoreBoard(){
             <Text style={styles.title}>Score Board</Text>
             <Text style={styles.title}>Player Turn: {playerTurn}</Text>
             <SafeAreaView style={styles.Header}>
-                <Text style={styles.Cell}>Player</Text>
-                <Text style={styles.Cell}>Score</Text>
-                <Text style={styles.Cell}>Points Per Round</Text>
+                {/* use the Cell style but change the font color for brown and bold */}
+                <Text style={[styles.Cell, { color: 'brown', fontWeight: 'bold' }]}>
+                    Player
+                </Text>
+                <Text style={[styles.Cell, { color: 'brown', fontWeight: 'bold' }]}>
+                    Score
+                </Text>
+                <Text style={[styles.Cell, { color: 'brown', fontWeight: 'bold' }]}>
+                    Points Per Round
+                </Text>
             </SafeAreaView>
             <SafeAreaView style={styles.Row}>
                 <Text style={styles.Cell}>{player1}</Text>
@@ -85,6 +99,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 10,
         padding: 10,
+        //  Font size
+        fontSize: 25,
+        //  Font color
+        color: 'red',
     },
     Row: {
         flex: 1,
@@ -105,12 +123,12 @@ const styles = StyleSheet.create({
         borderColor: '#000',
         // Set the border Radius
         borderRadius: 20,
-        // Set the padding
-        padding: 50,
-        // Set the margin
-        margin: 10,
         // Set the text alignment
         textAlign: 'center',
+        // Set the font size
+        fontSize: 20,
+        // Set the font color
+        color: '#000',
     },
 });
 

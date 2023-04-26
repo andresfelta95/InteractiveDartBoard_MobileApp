@@ -32,7 +32,8 @@ export default function DartBoard(props) {
         // create the array to hold the circle coordinates
         let newCircleCoords = [];
         // check if the dartLocations is not empty
-        if (dartLocations.length > 0) {
+        if (dartLocations.length > 0) 
+        {
             // loop through the dartLocations
             for (let i = 0; i < dartLocations.length; i++) {
                 // get the dartLocation
@@ -40,10 +41,17 @@ export default function DartBoard(props) {
                 // get the x and y coordinates
                 const x = dartLocation[0];
                 const y = dartLocation[1];
-                // transform the coordinates to mobile
-                const mobileCoords = coordinateTransformEspToMobile(x, y);
-                // add the coordinates to the newCircleCoords
-                newCircleCoords.push({ x: mobileCoords[0], y: mobileCoords[1] });
+                // if the x and y are not null
+                if (x !== null && y !== null) {
+                    // transform the coordinates to mobile
+                    const mobileCoords = coordinateTransformEspToMobile(x, y);
+                    // add the coordinates to the newCircleCoords
+                    newCircleCoords.push({ x: mobileCoords[0], y: mobileCoords[1] });
+                }
+                else {
+                    // add the coordinates to the newCircleCoords
+                    newCircleCoords.push({ x: 0, y: 0 });
+                }
             }
         }
         // update the circleCoords
@@ -57,15 +65,6 @@ export default function DartBoard(props) {
         // add the location to the circleCoords
         setCircleCoords([...circleCoords, { x: locationX, y: locationY }]);
         coordinateTransformMobileToEsp(locationX, locationY);
-        //test data 
-        let test1 = coordinateTransformEspToMobile(2, -4);
-        // setCircleCoords([...circleCoords, { x: test1[0], y: test1[1] }]);
-        // let test2 = coordinateTransformEspToMobile(3, 5);
-        // // setCircleCoords([...circleCoords, { x: test2[0], y: test2[1] }]);
-        // let test3 = coordinateTransformEspToMobile(-13, -5);
-        // // setCircleCoords([...circleCoords, { x: test3[0], y: test3[1] }]);
-        // let test4 = coordinateTransformEspToMobile(-5, 17);
-        // // setCircleCoords([...circleCoords, { x: test4[0], y: test4[1] }]);
     };
 
     // create the state to long press
@@ -101,25 +100,6 @@ export default function DartBoard(props) {
     )
 }
 
-//  Function to transform the coordinates on app to the coordinates on the dartboard
-function convertCoordinates(x, y) {
-    // convert physical dartboard coordinates to cartesian coordinates
-    const cx = x - 0;
-    const cy = 0 - y;
-  
-    // calculate cartesian coordinates with respect to radius
-    const r = 19;
-    const fx = (cx / r) * 145.5;
-    const fy = (cy / r) * 145.5;
-  
-    // translate image coordinates to center
-    const ix = fx + 200;
-    const iy = fy + 200;
-  
-    // return image coordinates
-    // return { x: ix, y: iy };
-    console.log("x: " + ix + " y: " + iy);
-}  
 // Transforming the app daa to the esp32
 function coordinateTransformMobileToEsp(locationX, locationY)
 {

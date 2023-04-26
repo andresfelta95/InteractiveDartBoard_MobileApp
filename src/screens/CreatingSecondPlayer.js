@@ -11,6 +11,10 @@ export default function CreatingSecondPlayer({ navigation }) {
         // Send a POST request to the server to validate the user's credentials
             fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/game.php', {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cookie': 'PHPSESSID=123',
+                },
                 body: JSON.stringify({
                     // The server expects an action, and a username and password
                     action: 'creatingSecondPlayer',

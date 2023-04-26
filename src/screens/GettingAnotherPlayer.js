@@ -20,6 +20,7 @@ export default function GettingAnotherPlayer({ navigation }) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Cookie': 'PHPSESSID=123',
             },
             body: JSON.stringify({
                 action: 'addingSecondPlayer',
@@ -37,15 +38,15 @@ export default function GettingAnotherPlayer({ navigation }) {
             setGame(prevState => ({
                 ...prevState,
                 loggedIn: true,
-                userName: username,
                 dartCount: 0,
                 player1Score: 301,
                 player2Score: 301,
-                player1: prevState.userName,
-                player2: username,
+                player1: userName,
+                player2: username2,
             }));
                 
             navigation.navigate('Game');
+
             
         }else if(data.failed){
             alert(data.message);

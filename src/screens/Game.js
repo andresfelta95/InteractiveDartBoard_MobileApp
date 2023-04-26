@@ -125,8 +125,10 @@ function Game() {
             // fetch(url, {
                  fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/game.php', {
                 method: 'POST',
+                // Add the header with a cookie with a session ID
                 headers: {
                     'Content-Type': 'application/json',
+                    'Cookie': 'PHPSESSID=123',
                 },
                 body: JSON.stringify({
                     action: 'getDarts',
