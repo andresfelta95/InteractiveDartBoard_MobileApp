@@ -29,8 +29,9 @@ export function GameProvider({ children }) {
         dartLocations: [],
         // create the dart count
         dartCount: 0,
-        // create the score
-        score: 0,
+        // create the players score
+        player1Score: 301,
+        player2Score: 301,
         // create the multiplier
         multiplier: 1,
         // game id
