@@ -37,6 +37,8 @@ export function GameProvider({ children }) {
         gameId: 0,
         // UserName
         userName: '',
+        // Login status
+        loggedIn: false,
 
     });
     console.log(game.dartLocations);

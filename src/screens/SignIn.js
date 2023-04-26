@@ -32,6 +32,12 @@ export default function SignIn({ navigation }) {
                 navigation.navigate('Home');
                 setUsername('');
                 setPassword('');
+                // Set the game context
+                setGame(prevState => ({
+                    ...prevState,
+                    loggedIn: true,
+                    userName: username,
+                }));
             } else {
                 // If the user is not authenticated, display an error message
                 alert("Invalid username or password");

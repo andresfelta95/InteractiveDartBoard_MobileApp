@@ -5,6 +5,10 @@ import { GameContext } from '../providers/GameProvider';
 
 export default function GettingAnotherPlayer({ navigation }) {
     const [username, setUsername] = React.useState('');
+    // Get the game context
+    const { game, setGame } = React.useContext(GameContext);
+    // Get the state of the game
+    const { loggedIn, userName } = game;
     // Function to create a new game in the server
     async function AddPlayer() {
         // create the request
@@ -35,21 +39,12 @@ export default function GettingAnotherPlayer({ navigation }) {
         }
     }
 
-    
-
-    async function CreatingSecondPlayer() {
-        
-        navigation.navigate('CreatingSecondPlayer');
-    }
-
     return (
         <SafeAreaView stryle={styles.container}>
-            <Text style={styles.title}>
-                Player 1
-            </Text>
+            <Text style={styles.title}>Player 1</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Player 1"
+                placeholder={userName}
                 //value={route.params.username}
                 editable={false}
              />
@@ -67,7 +62,7 @@ export default function GettingAnotherPlayer({ navigation }) {
                 title="Add Player" 
                 onPress={() => AddPlayer()} 
             />
-            <Button title="Create Player" onPress={() => CreatingSecondPlayer()} />
+            <Button title="Create Player" onPress={() => navigation.navigate('CreatingSecondPlayer')} />
         </SafeAreaView>
     );
 }
