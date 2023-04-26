@@ -123,7 +123,7 @@ function Game() {
             // create the request
             // url = 'https://thor.cnt.sast.ca/~atangari/CMPE2550/Project/esp32Server.php';
             // fetch(url, {
-                 fetch('https://thor.cnt.sast.ca/~kevenlou/distance/game.php', {
+                 fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/game.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
