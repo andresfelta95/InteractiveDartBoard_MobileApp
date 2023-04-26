@@ -136,12 +136,12 @@ function Game() {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.success) {
-                        console.log('Success:', data.dartLocation.x, data.dartLocation.y);
-                        const score = calclateScore(data.dartLocation.x, data.dartLocation.y);
+                        console.log('Success:', data.locationX, data.locationX);
+                        const score = calclateScore(data.locationX, data.locationY);
                         console.log('point', score);
 
 
-                        let newDartLocation = [data.dartLocation.x, data.dartLocation.y]
+                        let newDartLocation = [data.locationX, data.locationy]
                         // Add the dart locations to the game context
                         // into the dartLocations: []
                         setGame(prevState => {
