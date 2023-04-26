@@ -88,8 +88,6 @@ export default function Navigation() {
                         },
                     }}
                 />
-            </Stack.Group>
-            <Stack.Group screenOptions={{ presentation: 'modal' }}>
                 <Stack.Screen 
                     name="GettingAnotherPlayer" 
                     component={GettingAnotherPlayer}
@@ -100,8 +98,6 @@ export default function Navigation() {
                         },
                     }}
                 />
-            </Stack.Group>
-            <Stack.Group screenOptions={{ presentation: 'modal' }}>
                 <Stack.Screen 
                     name="CreatingSecondPlayer" 
                     component={CreatingSecondPlayer}
