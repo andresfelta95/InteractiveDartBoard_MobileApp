@@ -28,7 +28,7 @@ export default function Home({ navigation }) {
             <TouchableOpacity onPress={() => navigation.navigate('GettingAnotherPlayer')}>
                 <Image
                     style={styles.image}
-                    source={require('../assets/images/dartboard.png')}
+                    source={require('../assets/dartboard.png')}
                 />
             </TouchableOpacity>
                 
