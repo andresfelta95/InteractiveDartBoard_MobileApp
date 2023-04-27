@@ -35,7 +35,7 @@ export function GameProvider({ children }) {
         // create the player turn
         playerTurn: 1,
         // create the points per round
-        pointsPerRound: 0,
+        pointsPerDart: 0,
         // create the players
         player1: 'Player 1',
         player2: 'Player 2',

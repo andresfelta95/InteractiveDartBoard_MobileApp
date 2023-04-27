@@ -39,6 +39,7 @@ export default function GettingAnotherPlayer({ navigation }) {
                 player2Score: 301,
                 player1: userName,
                 player2: username2,
+                pointsPerDart: 0,
             }));
                 
             navigation.navigate('Game');

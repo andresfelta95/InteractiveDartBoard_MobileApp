@@ -24,7 +24,7 @@ function ScoreBoard(){
     // get the scores
     const { player1Score, player2Score } = game;
     // get the points per round from the server
-    const { pointsPerRound } = game;
+    const { pointsPerDart } = game;
     // get the player turn
     const { playerTurn } = game;
     // get the dart locations
@@ -35,7 +35,7 @@ function ScoreBoard(){
     console.log(player2);
     console.log(player1Score);
     console.log(player2Score);
-    console.log(pointsPerRound);
+    console.log(pointsPerDart);
     console.log(playerTurn);
     console.log(dartLocations);
     console.log(dartCount);
@@ -54,20 +54,20 @@ function ScoreBoard(){
                     Score
                 </Text>
                 <Text style={[styles.Cell, { color: 'brown', fontWeight: 'bold' }]}>
-                    Points Per Round
+                    Points Per Dart
                 </Text>
             </SafeAreaView>
             <SafeAreaView style={styles.Row}>
                 <Text style={styles.Cell}>{player1}</Text>
                 <Text style={styles.Cell}>{player1Score}</Text>
                 {/* if player two turn show 0 */}
-                <Text style={styles.Cell}>{playerTurn == 2 ? 0 : pointsPerRound}</Text>
+                <Text style={styles.Cell}>{playerTurn == 2 ? 0 : pointsPerDart}</Text>
             </SafeAreaView>
             <SafeAreaView style={styles.Row}>
                 <Text style={styles.Cell}>{player2}</Text>
                 <Text style={styles.Cell}>{player2Score}</Text>
                 {/* if player one turn show 0 */}
-                <Text style={styles.Cell}>{playerTurn == 1 ? 0 : pointsPerRound}</Text>
+                <Text style={styles.Cell}>{playerTurn == 1 ? 0 : pointsPerDart}</Text>
             </SafeAreaView>
         </SafeAreaView>
     );

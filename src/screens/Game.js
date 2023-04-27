@@ -38,22 +38,31 @@ function Game() {
     const { playerTurn } = game; // get the player turn from the game context
     const { player1Score } = game; // get the player 1 score from the game context
     const { player2Score } = game; // get the player 2 score from the game context
-    const { pointsPerRound } = game; // get the points per round from the game context
+    const { pointsPerDart } = game; // get the points per round from the game context
     const { player1 } = game; // get the player 1 name from the game context
     const { player2 } = game; // get the player 2 name from the game context
 
     function calclateScore(pointX, pointY) {
+        // check if the points are null
+        if (pointX == null || pointY == null) {
+            return 0;
+        }
+        // check if the point is in the bullseye
+        if (pointX < 0.5 && pointX > -0.5 && pointY < 0.5 && pointY > -0.5) {
+            return 50;
+        }
+        // create the variables
         let score = 0;
         let distance = 0;
         console.log("calclating");
-        // using Pythagoras formula to calculate the distance to the centre.
+        // calculate the distance
         distance = Math.sqrt(Math.pow(pointX, 2) + Math.pow(pointY, 2));
         console.log(distance);
 
-        //   #Use SOCATOA to calculate the angle matching the arrow position
-        let angle = Math.atan2(pointX, pointY) * (180 / Math.PI);
+        //   calculate the angle
+        let angle = Math.atan2(pointY, pointX) * (180 / Math.PI);
         if (angle < 0) {
-            angle += 360
+            angle = 360 + angle;
         }
         console.log(angle);
 
@@ -97,6 +106,7 @@ function Game() {
             score = 15;
         } else if (angle <= 360 && angle >= 342) {
             score = 10;
+        }
 
 
         if (distance > 0 && distance < 1) {
@@ -150,9 +160,14 @@ function Game() {
                                 player2Score: prevState.playerTurn === 2 ? (prevState.player2Score - score < 0 ? prevState.player2Score : prevState.player2Score - score) : prevState.player2Score,
                                 // if the dart count is 3, change the player turn
                                 playerTurn: prevState.dartCount === 3 ? (prevState.playerTurn === 1 ? 2 : 1) : prevState.playerTurn,
-                                pointsPerRound: score,
+                                pointsPerDart: score,
                             };
                         });
+                        // if the dart count is 3, send the score to the server
+                        if (game.dartCount === 3) {
+                            sendScore();
+                        }   
+
                     } else {
                         console.log('No darts thrown');
                     }
@@ -161,6 +176,35 @@ function Game() {
                     console.error('Error:', error);
                 });
         }, 1000);
+
+        // Function to calculate send the score to the server
+        const sendScore = () => {
+            // create the request
+            // url = 'https://thor.cnt.sast.ca/~atangari/CMPE2550/Project/esp32Server.php';
+            // fetch(url, {
+
+            fetch('https://thor.cnt.sast.ca/~kevenlou/mobileToEsp/game.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    action: 'getScore',
+                    gameID: game.gameID,
+                    // depending on the player turn, send the score to the server
+                    score: game.playerTurn === 1 ? game.player1Score : game.player2Score,
+
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        console.log('Success:', data);
+                    } else {
+                        console.log('No darts thrown');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
 
         // clear the interval
         return () => clearInterval(interval);
